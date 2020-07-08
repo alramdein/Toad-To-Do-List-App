@@ -1,31 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 
-import { 
-  Container, 
-  Row, 
-  Col
-} from 'reactstrap';
+import ToDoList from './views/ToDoList'
 
-import Header from './views/Header'
-import InputTask from './views/InputTask'
+class App extends Component {
 
-function App() {
-  return (
-    <Container className="pt-5">
-      <Row>
-        <Col sm="12" md={{ size: 6, offset: 3 }}>
-          <Header></Header>
-        </Col>
-        
-      </Row>
-      <Row>
-        <Col sm="12" md={{ size: 6, offset: 3 }}>
-          <InputTask></InputTask>
-        </Col>
-      </Row>
-    </Container>
-  );
+  render () {
+    return (
+      <ToDoList></ToDoList>
+    )
+  }
 }
 
 export default App;
