@@ -9,18 +9,26 @@ import {
     ListGroupItem
   } from 'reactstrap';
 
+
 class InputTask extends React.Component {
+    numtasks=0
+
     constructor(props) {
         super(props)
-        this.state = {msg:"s"}
-
+        this.state = {
+            msg:"s", 
+            // numtasks:0, 
+            todolists: []
+        }
         this.handleClick = this.handleClick.bind(this)
     } 
 
     handleClick() {
-        this.setState(state => ({
-            msg:"hayu"
-        }))
+        this.numtasks+=1
+        this.state.todolists.push(<li className="list-group-item">cek</li>)
+        this.setState(this.state = () => {
+            return this.state.todolists
+        })
     }
 
     render() {
@@ -37,9 +45,7 @@ class InputTask extends React.Component {
                     Tasks List
                 </div>
                 <ul className="list-group list-group-flush">
-                    <li className="list-group-item">Clean code</li>
-                    <li className="list-group-item">Refactoring</li>
-                    <li className="list-group-item">Bersihin kamar</li>
+                    {this.state.todolists}
                 </ul>
             </div>
             </>
