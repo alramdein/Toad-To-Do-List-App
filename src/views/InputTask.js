@@ -8,6 +8,7 @@ import {
     ListGroup,
     ListGroupItem
   } from 'reactstrap';
+import TaskList from "./TaskList";
 
 
 class InputTask extends React.Component {
@@ -25,6 +26,7 @@ class InputTask extends React.Component {
 
     handleClick() {
         this.numtasks+=1
+        console.log(this.numtasks)
         this.state.todolists.push(<li className="list-group-item">cek</li>)
         this.setState(this.state = () => {
             return this.state.todolists
@@ -40,14 +42,7 @@ class InputTask extends React.Component {
                     <Button color="primary" onClick={this.handleClick}>Add Task</Button>
                 </InputGroupAddon>
             </InputGroup>
-            <div className="card mt-4">
-                <div className="card-header text-white bg-primary">
-                    Tasks List
-                </div>
-                <ul className="list-group list-group-flush">
-                    {this.state.todolists}
-                </ul>
-            </div>
+            <TaskList todolists={this.state.todolists}/>
             </>
            
         )

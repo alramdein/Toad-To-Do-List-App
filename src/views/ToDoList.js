@@ -14,13 +14,13 @@ class ToDoList extends React.Component {
         return (
             <Container className="pt-5">
                 <Row>
-                    <Col sm="12" md={{ size: 6, offset: 3 }}>
-                    <Header></Header>
+                    <Col sm="12" md="12">
+                    <Header/>
                     </Col>
                 </Row>
-                <Row>
-                    <Col sm="12" md={{ size: 6, offset: 3 }}>
-                    <InputTask></InputTask>
+                <Row className="mt-3">
+                    <Col sm="12" md={{ size: 6 }}>
+                    <InputTask/>
                     </Col>
                 </Row>
             </Container>
