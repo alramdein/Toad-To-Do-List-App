@@ -5,8 +5,7 @@ import {
     InputGroup,
     InputGroupAddon,
     Button,
-    ListGroup,
-    ListGroupItem
+    Form,
   } from 'reactstrap';
 import TaskList from "./TaskList";
 
@@ -17,34 +16,39 @@ class InputTask extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            msg:"s", 
-            // numtasks:0, 
+            task:"", 
             todolists: []
         }
-        this.handleClick = this.handleClick.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     } 
 
-    handleClick() {
-        this.numtasks+=1
-        console.log(this.numtasks)
-        this.state.todolists.push(<li className="list-group-item">cek</li>)
+    handleChange(event){
+        this.setState({task: event.target.value })
+    }
+
+    handleSubmit(event){
+        this.state.todolists.push(<li className="list-group-item">{this.state.task}</li>)
+        alert("A task was added: "+this.state.task)
         this.setState(this.state = () => {
             return this.state.todolists
         })
+        event.preventDefault()
     }
 
     render() {
         return (
             <>
-            <InputGroup>
-                <Input placeholder="Add task here"/>
-                <InputGroupAddon addonType="append">
-                    <Button color="primary" onClick={this.handleClick}>Add Task</Button>
-                </InputGroupAddon>
-            </InputGroup>
-            <TaskList todolists={this.state.todolists}/>
+            <Form onSubmit={this.handleSubmit}>
+                <InputGroup>
+                    <Input type="text" placeholder="Add task here" value={this.state.task} onChange={this.handleChange}/>
+                    <InputGroupAddon addonType="append">
+                        <Button color="primary" type="submit">Add Task</Button>
+                    </InputGroupAddon>
+                </InputGroup>
+                <TaskList todolists={this.state.todolists}/>
+            </Form>
             </>
-           
         )
     }
 }

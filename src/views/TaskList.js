@@ -1,18 +1,10 @@
 import React from "react"
 
 import { 
-    Container, 
-    Row, 
-    Col
 } from 'reactstrap';
 
 
 class TaskList extends React.Component {
-    constructor(props){
-        super(props)
-        const todolists = props.todolists
-        console.log("todolists: "+todolists)
-    }
 
     render() {
         return (

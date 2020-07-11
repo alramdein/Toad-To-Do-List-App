@@ -3,7 +3,6 @@ import jumbotronImg from "../assets/img/todolist-pic.jpg"
 import '../styles/Header.css'
 
 import {
-    Jumbotron,
   } from 'reactstrap';
 
 class Header extends React.Component {
