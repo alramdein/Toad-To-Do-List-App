@@ -71,7 +71,7 @@ class FormInput extends React.Component {
             <>
             <Form onSubmit={this.handleSubmit}>
             <Row>
-                <Col sm="12" md="6">
+                <Col sm="12" md="12">
                     <InputGroup>
                         <Input type="text" placeholder="Add task here" value={this.state.task} onChange={this.handleChange}/>
                         <InputGroupAddon addonType="append">
@@ -79,19 +79,17 @@ class FormInput extends React.Component {
                         </InputGroupAddon>
                     </InputGroup>
                 </Col>
-                <Col sm="12" md="6">
+                <Col sm="12" md="12">
                     {this.state.toastAdd}
                 </Col>
             </Row>
             <Row>
-                <Col sm="12" md="6">
+                <Col sm="12" md="12">
                     <TaskList todolists={this.state.todolists}/>
-                </Col>
-                <Col>
-                    <FinishedTaskList/>
                 </Col>
             </Row>
             </Form>
+           
             </>
         )
     }

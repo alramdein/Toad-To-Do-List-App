@@ -1,10 +1,11 @@
-.blackLayer {
+.greyLayer {
     background-color: rgba(46, 49, 49, 1);
+    /* background-color: rgb(119, 0, 255); */
+    height: 100em;
+    width: 5em;
     opacity: 50%;
-    z-index: 5;
-    /* position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; */
+}
+
+#mainText {
+    opacity: 100%;
 }

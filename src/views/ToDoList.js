@@ -6,20 +6,22 @@ import {
     Col
 } from 'reactstrap';
 
-import Header from './Header'
+// import '../styles/ToDoList.css'
+
 import FormInput from './FormInput'
+import Header from './Header'
 
 class ToDoList extends React.Component {
     render() {
         return (
             <Container className="pt-5">
-                <Row>
-                    <Col>
+                <Row className="mt-0">
+                    <Col md="12" style={{textAlign: "center"}}>
                         <Header/>
                     </Col>
                 </Row>
-                <Row className="mt-3">
-                    <Col>
+                <Row className="mt-5 d-flex justify-content-center" >
+                    <Col md="5">
                         <FormInput/>
                     </Col>
                 </Row>
