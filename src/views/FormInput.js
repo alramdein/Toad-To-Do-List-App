@@ -18,7 +18,6 @@ import FinishedTaskList from "./FinishedTaskList"
 
 class FormInput extends React.Component {
     numtasks=0
-
     constructor(props) {
         super(props)
         this.state = {
@@ -41,7 +40,7 @@ class FormInput extends React.Component {
             return alert("Task can't be empty")
         }
         this.state.todolists.push(<li className="list-group-item">{this.state.task}</li>)
-        // alert("A task was added: "+this.state.task)
+        this.toDoListComponent = <TaskList todolists={this.state.todolists}/>
         this.toastAdd()
         this.setState(this.state = () => {
             return this.state.todolists
@@ -66,30 +65,43 @@ class FormInput extends React.Component {
         })
     }
 
+    componentWillMount() {
+        this.toDoListComponent = <p className="mt-5" style={{textAlign: "center", opacity: "70%"}}>
+                                    Kindly add the task to create your tasks list ;)
+                                </p>
+    }
+
+    //!questioned
+    componentDidUpdate(prevState) {
+        if(prevState.todolists != this.state.todolist) {
+            this.toDoListComponent = <TaskList todolists={this.state.todolists}/>
+        }
+    }
+
     render() {
+        var toDoListComponent
         return (
             <>
             <Form onSubmit={this.handleSubmit}>
-            <Row>
-                <Col sm="12" md="12">
-                    <InputGroup>
-                        <Input type="text" placeholder="Add task here" value={this.state.task} onChange={this.handleChange}/>
-                        <InputGroupAddon addonType="append">
-                            <Button color="primary" type="submit">Add Task</Button>
-                        </InputGroupAddon>
-                    </InputGroup>
-                </Col>
-                <Col sm="12" md="12">
-                    {this.state.toastAdd}
-                </Col>
-            </Row>
-            <Row>
-                <Col sm="12" md="12">
-                    <TaskList todolists={this.state.todolists}/>
-                </Col>
-            </Row>
+                <Row>
+                    <Col sm="12" md="12">
+                        <InputGroup>
+                            <Input type="text" placeholder="Add task here" value={this.state.task} onChange={this.handleChange}/>
+                            <InputGroupAddon addonType="append">
+                                <Button color="primary" type="submit">Add Task</Button>
+                            </InputGroupAddon>
+                        </InputGroup>
+                    </Col>
+                    <Col sm="12" md="12">
+                        {this.state.toastAdd}
+                    </Col>
+                </Row>
+                <Row>
+                    <Col sm="12" md="12">
+                        {this.toDoListComponent}
+                    </Col>
+                </Row>
             </Form>
-           
             </>
         )
     }
